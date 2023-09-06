@@ -1,0 +1,40 @@
+<div class="card mb-3">
+    <div class="row g-0">
+        <div class="col-md-4">
+            <img src="{{character?.image}}" class="img-fluid rounded" alt="{{character?.name}} image">
+        </div>
+        <div class="col-md-8">
+            <div class="card-body h-100 pb-3 position-relative">
+                <h2 class="card-title">{{character?.name}}</h2>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item ps-1 py-0 text-secondary"><strong>Status:
+                        </strong>{{character?.status}}
+                    </li>
+                    <li class="list-group-item ps-1 py-1 text-secondary"><strong>Species: </strong>
+                        {{character?.species}}
+                    </li>
+                    <li class="list-group-item ps-1 py-1 text-secondary"><strong>Type: </strong>
+                        {{character?.type}}
+                    </li>
+                    <li class="list-group-item ps-1 py-1 text-secondary"><strong>Gender: </strong>
+                        {{character?.gender}}
+                    </li>
+                    <li class="list-group-item ps-1 py-1 text-secondary"><strong>Origin: </strong><a
+                            href="{{character?.origin?.url}}" class="link">{{character?.origin?.name}}</a>
+                    </li>
+                    <li class="list-group-item ps-1 py-1 text-secondary"><strong>Location: </strong><a
+                            href="{{character?.location?.url}}" class="link">{{character?.location?.name}}</a>
+                    </li>
+                </ul>
+                <h5 class="h5 text-secondary mt-3">Episodes</h5>
+                <div class="row row-cols-1 row-cols-md-3 row-cols-lg-6">
+                    <div class="col" *ngFor="let episode of character?.episode">
+                        <div class="alert alert-secondary text-center"> <a class="text-decoration-none text-nowrap"
+                                [routerLink]="['/episode', episode.split('/').pop()]">Episode {{episode.split('/').pop()}}</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

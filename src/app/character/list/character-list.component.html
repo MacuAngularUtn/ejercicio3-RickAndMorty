@@ -1,0 +1,30 @@
+
+<div class="alert alert-primary">
+    <div class="d-flex" role="search">
+    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" [(ngModel)]="characterSearch" (ngModelChange)="search()">
+    <button class="btn btn-outline-success" (click)="search()">Search</button>
+    </div>
+</div>
+
+<div class="row row-cols-1 row-cols-md-3 row-cols-lg-4 g-4">
+    <div class="col" *ngFor="let character of characters">
+
+        <a class="text-decoration-none" [routerLink]="['/character', character.id]">
+            <div class="card h-100 d-flex flex-column justify-content-center fw-bold"
+                [ngClass]="{'border-success':character.status ==='Alive', 'border-danger': character.status ==='Dead', 'border-secondary': character.status ==='unknown'}">
+                <div class="text-light text-center p-2"
+                    [ngClass]="{'bg-success':character.status ==='Alive', 'bg-danger': character.status ==='Dead', 'bg-secondary': character.status ==='unknown'}">
+                    {{character.species}} - {{character.status}}
+                </div>
+                <img class="img img-fluid" src="{{character.image}}" alt="" />
+                <div class="card-body">
+                    <div class="mb-2 text-primary-emphasis fs-4 fw-bold">{{character.name}}</div>
+                    <div class="fs-7 fw-normal">Last known location</div>
+                    <div class="fs-6">{{character.location.name}}</div>
+                    <div class="fs-7 fw-normal">First seen in</div>
+                    <div class="fs-6">{{character.origin.name}}</div>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
